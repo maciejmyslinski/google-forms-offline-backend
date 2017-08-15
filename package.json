@@ -17,9 +17,10 @@
     "functions-6-to-5": "babel 'functionsES6' --out-dir 'functions' --presets=env --copy-files --ignore 'node_modules'",
     "postfunctions-6-to-5": "cd functions && yarn",
     "precommit": "yarn lint-staged",
-    "functions:install": "cd functionsES6 && yarn install"
+    "functions:install": "cd functionsES6 && yarn install",
+    "functions:lint": "eslint functionsES6 --cache"
   },
   "lint-staged": {
-    "functionsES6/**/*.js": ["prettier-eslint --write", "git add"]
+    "functionsES6/**/*.js": ["prettier-eslint --write", "yarn functions:lint", "git add"]
   }
 }
