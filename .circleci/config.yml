@@ -25,8 +25,14 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Installing firebase functionsES6 dependencies
+          command: yarn install
+          working_directory: ~/repo/functionsES6
         
       # run tests!
+      - run: yarn functions:lint
       - run: yarn test
 
   deploy_staging:
