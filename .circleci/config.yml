@@ -45,11 +45,19 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: yarn install
+      - run:
+          name: Installing project dependencies
+          command: yarn install
+
+      - run:
+          name: Installing firebase functions dependencies
+          command: yarn install
+          working_directory: ~/repo/functions
 
       - save_cache:
           paths:
             - node_modules
+            - functions/node_modules
 
           key: v1-dependencies-{{ checksum "package.json" }}
 
@@ -73,11 +81,19 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: yarn install
+      - run:
+          name: Installing project dependencies
+          command: yarn install
+
+      - run:
+          name: Installing firebase functions dependencies
+          command: yarn install
+          working_directory: ~/repo/functions
 
       - save_cache:
           paths:
             - node_modules
+            - functions/node_modules
 
           key: v1-dependencies-{{ checksum "package.json" }}
 
