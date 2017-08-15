@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "firebase-tools": "^3.9.2"
+  },
+  "scripts": {
+    "test": "echo \"There are no tests yet\""
+  }
+}
