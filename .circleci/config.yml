@@ -30,3 +30,9 @@ jobs:
         
       # run tests!
       - run: yarn test
+
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              node_modules/.bin/firebase deploy --project ${STAGING_PROJECT_ID} --token ${FIREBASE_TOKEN}
+            fi
