@@ -27,6 +27,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
+      - run: yarn functions:lint
       - run: yarn test
 
   deploy_staging:
