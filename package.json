@@ -1,8 +1,14 @@
 {
   "devDependencies": {
-    "firebase-tools": "^3.9.2"
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "firebase-tools": "^3.9.2",
+    "rimraf": "^2.6.1"
   },
   "scripts": {
-    "test": "echo \"There are no tests yet\""
+    "test": "echo \"There are no tests yet\"",
+    "prefunctions-6-to-5": "rimraf functions",
+    "functions-6-to-5": "babel 'functionsES6' --out-dir 'functions' --presets=env --copy-files --ignore 'node_modules'",
+    "postfunctions-6-to-5": "cd functions && yarn"
   }
 }
