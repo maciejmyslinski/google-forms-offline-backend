@@ -45,7 +45,7 @@ workflows:
   deploy-staging:
     jobs:
       - build
-      - deploy_staging
+      - deploy_staging:
           requires: 
             - build
           filters:
