@@ -40,9 +40,18 @@ jobs:
           command: |
             node_modules/.bin/firebase deploy --project ${STAGING_PROJECT_ID} --token ${FIREBASE_TOKEN}
 
+  deploy_production:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: ~/repo
+    steps:
+      - deploy:
+          command: |
+            node_modules/.bin/firebase deploy --project ${PRODUCTION_PROJECT_ID} --token ${FIREBASE_TOKEN}
+
 workflows:
   version: 2
-  deploy-staging:
+  build-and-deploy:
     jobs:
       - build
       - deploy_staging:
@@ -51,3 +60,9 @@ workflows:
           filters:
             branches:
               only: master
+      - deploy_production:
+          requires:
+            - build
+          filters:
+            branches:
+              only: production
