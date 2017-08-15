@@ -2,13 +2,24 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.6.0",
+    "eslint": "^4.4.1",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0",
     "firebase-tools": "^3.9.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.3",
+    "prettier-eslint-cli": "^4.1.1",
     "rimraf": "^2.6.1"
   },
   "scripts": {
     "test": "echo \"There are no tests yet\"",
     "prefunctions-6-to-5": "rimraf functions",
     "functions-6-to-5": "babel 'functionsES6' --out-dir 'functions' --presets=env --copy-files --ignore 'node_modules'",
-    "postfunctions-6-to-5": "cd functions && yarn"
+    "postfunctions-6-to-5": "cd functions && yarn",
+    "precommit": "yarn lint-staged",
+    "functions:install": "cd functionsES6 && yarn install"
+  },
+  "lint-staged": {
+    "functionsES6/**/*.js": ["prettier-eslint --write", "git add"]
   }
 }
