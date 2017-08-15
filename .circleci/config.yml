@@ -50,6 +50,10 @@ jobs:
           command: yarn install
 
       - run:
+          name: Compiling es6 functions into es5
+          command: yarn functions-6-to-5
+
+      - run:
           name: Installing firebase functions dependencies
           command: yarn install
           working_directory: ~/repo/functions
@@ -84,6 +88,10 @@ jobs:
       - run:
           name: Installing project dependencies
           command: yarn install
+
+      - run:
+          name: Compiling es6 functions into es5
+          command: yarn functions-6-to-5
 
       - run:
           name: Installing firebase functions dependencies
