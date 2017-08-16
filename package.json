@@ -18,7 +18,7 @@
     "test": "yarn functions:test",
     "precommit": "yarn lint-staged",
     "prefunctions:compile": "rimraf functions",
-    "functions:compile": "babel 'functionsES6' --out-dir 'functions' --presets=env --copy-files --ignore node_modules,__snapshots__",
+    "functions:compile": "babel 'functionsES6' --out-dir 'functions' --presets=env --copy-files --ignore node_modules,__snapshots__,test.js",
     "postfunctions:compile": "cd functions && yarn",
     "functions:install": "cd functionsES6 && yarn install",
     "functions:lint": "eslint functionsES6 --cache",
