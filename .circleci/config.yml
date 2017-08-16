@@ -57,7 +57,7 @@ jobs:
 
       - run:
           name: Compiling es6 functions into es5
-          command: yarn functions-6-to-5
+          command: yarn functions:compile
 
       - run:
           name: Installing firebase functions dependencies
@@ -97,7 +97,7 @@ jobs:
 
       - run:
           name: Compiling es6 functions into es5
-          command: yarn functions-6-to-5
+          command: yarn functions:compile
 
       - run:
           name: Installing firebase functions dependencies
