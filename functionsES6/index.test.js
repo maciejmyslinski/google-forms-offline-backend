@@ -16,7 +16,7 @@ function mockAdmin() {
   };
 }
 
-function mockFirebase() {
+function mockFunctions() {
   const original = require.requireActual('firebase-functions');
   return {
     ...original,
@@ -36,7 +36,7 @@ function mockFirebase() {
 }
 
 jest.mock('firebase-admin', () => mockAdmin());
-jest.mock('firebase-functions', () => mockFirebase());
+jest.mock('firebase-functions', () => mockFunctions());
 
 describe('adding form description', async () => {
   const ENDPOINT_URL = '/v1/form-description';

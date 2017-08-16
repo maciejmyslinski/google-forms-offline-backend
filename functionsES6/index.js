@@ -1,9 +1,9 @@
-import firebase from 'firebase-functions';
+import functions from 'firebase-functions';
 import express from 'express';
 import bodyParser from 'body-parser';
 import admin from 'firebase-admin';
 
-admin.initializeApp(firebase.config().firebase);
+admin.initializeApp(functions.config().firebase);
 const app = express();
 const v1 = express.Router();
 app.use(bodyParser.json());
@@ -17,4 +17,4 @@ v1.post('/form-description', (request, response) => {
   response.status(200).end();
 });
 
-export default firebase.https.onRequest(app);
+export default functions.https.onRequest(app);
