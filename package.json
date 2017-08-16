@@ -21,6 +21,11 @@
     "functions:lint": "eslint functionsES6 --cache"
   },
   "lint-staged": {
-    "functionsES6/**/*.js": ["prettier-eslint --write", "yarn functions:lint", "git add"]
-  }
+    "functionsES6/**/*.js": [
+      "prettier-eslint --write",
+      "yarn functions:lint",
+      "git add"
+    ]
+  },
+  "dependencies": {}
 }
