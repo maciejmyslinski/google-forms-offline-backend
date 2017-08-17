@@ -5,7 +5,9 @@ import * as admin from 'firebase-admin';
 
 admin.initializeApp(functions.config().firebase);
 
-const v1 = express();
+const app = express();
+const v1 = express.Router();
+app.use('/v1', v1);
 v1.use(bodyParser.json());
 v1.post('/form-description', (request, response) => {
   if (!request.body.id) {
@@ -16,4 +18,4 @@ v1.post('/form-description', (request, response) => {
   response.status(200).end();
 });
 
-export const api = functions.https.onRequest(v1);
+export const api = functions.https.onRequest(app);
