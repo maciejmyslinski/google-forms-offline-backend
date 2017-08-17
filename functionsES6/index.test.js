@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from './';
+import { api } from './';
 
 const savingToTheDatabaseMock = jest.fn();
 
@@ -39,10 +39,10 @@ jest.mock('firebase-admin', () => mockAdmin());
 jest.mock('firebase-functions', () => mockFunctions());
 
 describe('adding form description', async () => {
-  const ENDPOINT_URL = '/v1/form-description';
+  const ENDPOINT_URL = '/form-description';
   it('should return 400 when there is no form id', async () => {
     const requestBody = { no: 'id field' };
-    const response = await request(app).post(ENDPOINT_URL).send(requestBody);
+    const response = await request(api).post(ENDPOINT_URL).send(requestBody);
     expect(response.statusCode).toBe(400);
   });
   it('should save form description', async () => {
@@ -50,7 +50,7 @@ describe('adding form description', async () => {
       id: 123,
       another: 'form info',
     };
-    const response = await request(app).post(ENDPOINT_URL).send(requestBody);
+    const response = await request(api).post(ENDPOINT_URL).send(requestBody);
     expect(response.statusCode).toBe(200);
     expect(savingToTheDatabaseMock).toBeCalledWith(requestBody);
   });
