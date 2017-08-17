@@ -39,7 +39,7 @@ jest.mock('firebase-admin', () => mockAdmin());
 jest.mock('firebase-functions', () => mockFunctions());
 
 describe('adding form description', async () => {
-  const ENDPOINT_URL = '/form-description';
+  const ENDPOINT_URL = '/v1/form-description';
   it('should return 400 when there is no form id', async () => {
     const requestBody = { no: 'id field' };
     const response = await request(api).post(ENDPOINT_URL).send(requestBody);
